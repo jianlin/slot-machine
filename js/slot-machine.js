@@ -65,7 +65,7 @@ function SlotMachine(selectorForSpinTrigger, selectorForResultMessage, initialSp
             var message;
             $(selectorForSpinTrigger).prop("disabled", false);
             if (getNumberOfLineUp() === getNumberOfSpinningWheels()) {
-                message = pickOne(winLoseMessages.win).replace("{0}", arrSpinningWheels[0].getResultType);
+                message = pickOne(winLoseMessages.win).replace("{0}", arrSpinningWheels[0].getResultType());
             } else if (getNumberOfLineUp() === getNumberOfSpinningWheels() - 1) {
                 message = pickOne(winLoseMessages.almost);
             } else {
