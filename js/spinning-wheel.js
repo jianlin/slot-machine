@@ -1,5 +1,4 @@
 
-
 function SpinningWheel(id, arrImages) {
 
     var i,
@@ -10,10 +9,3 @@ function SpinningWheel(id, arrImages) {
     }
 
 }
-
-
-new SpinningWheel("#carousel1", ['images/coffee-maker.png', 'images/teapot.png', 'images/espresso-machine.png']);
-
-new SpinningWheel("#carousel2", ['images/coffee-filter.png', 'images/tea-strainer.png', 'images/espresso-tamper.png']);
-
-new SpinningWheel("#carousel3", ['images/coffee-grounds.png', 'images/tea-leaf.png', 'images/espresso-ground-beans.png']);
