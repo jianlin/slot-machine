@@ -19,8 +19,12 @@ function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initia
     carousel.rotation = -Math.floor(Math.random() * numPanels) * (360 / numPanels);
     carousel.modify();
 
+    function getResultType() {
+        var index = -(Math.round(carousel.rotation / carousel.theta) % arrImageData.length);
+        return arrImageData[index].type;
+    }
+
     this.spin = function() {
-        var self = this;
         var deferred = $.Deferred();
         var currentTime = (new Date()).getTime(), preTime = currentTime;
         var velocity = initialSpinVelocity;
@@ -56,7 +60,7 @@ function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initia
                         // if it is a little bit off due to floating point, correct it:
                         carousel.rotation = Math.round(carousel.rotation / carousel.theta) * carousel.theta;
                         carousel.transform();
-                        deferred.resolve(self.getResultType());
+                        deferred.resolve(getResultType());
                     }
                 }, timeInterval);
 
@@ -69,9 +73,6 @@ function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initia
         return deferred.promise();
     };
 
-    this.getResultType = function() {
-        var index = -(Math.round(carousel.rotation / carousel.theta) % arrImageData.length);
-        return arrImageData[index].type;
-    };
+
 
 }

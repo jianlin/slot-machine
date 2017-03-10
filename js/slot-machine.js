@@ -1,7 +1,7 @@
 /* global $, SpinningWheel */
 
 function SlotMachine(selectorForSpinTrigger, selectorForResultMessage, initialSpinVelocity, arrSpinningWheelData, winLoseMessages) {
-    var self = this, i, data, arrSpinningWheels = [], arrResults = {};
+    var i, data, arrSpinningWheels = [], arrResults = {};
 
     for (i = 0; i < arrSpinningWheelData.length; i++) {
         data = arrSpinningWheelData[i];
@@ -28,16 +28,32 @@ function SlotMachine(selectorForSpinTrigger, selectorForResultMessage, initialSp
         return arr[Math.floor(Math.random() * arr.length)];
     }
 
+    function clearResults() {
+        arrResults = {};
+    }
+
+    function tallyUpResult(result) {
+        arrResults[result] = (arrResults[result] || 0) + 1;
+    }
+
+    function getNumberOfLineUp() {
+        return Math.max.apply(null, $.map(arrResults, function(v, k) { return v; }));
+    }
+
+    function getNumberOfSpinningWheels() {
+        return arrSpinningWheelData.length;
+    }
+
     $(selectorForSpinTrigger).click(function() {
         var promise, arrPromises = [];
 
         $(selectorForSpinTrigger).prop("disabled", true);
         $(selectorForResultMessage).fadeOut(1200);
-        self.clearResults();
+        clearResults();
         for (i = 0; i < arrSpinningWheels.length; i++) {
             promise = arrSpinningWheels[i].spin();
             promise.done(function(result) {
-                self.tallyUpResults(result);
+                tallyUpResult(result);
             });
             arrPromises.push(promise);
         }
@@ -48,9 +64,9 @@ function SlotMachine(selectorForSpinTrigger, selectorForResultMessage, initialSp
         $.when.apply($, arrPromises).done(function() {
             var message;
             $(selectorForSpinTrigger).prop("disabled", false);
-            if (self.getNumberOfLineUp() === self.getNumberOfSpinningWheels()) {
+            if (getNumberOfLineUp() === getNumberOfSpinningWheels()) {
                 message = pickOne(winLoseMessages.win).replace("{0}", arrSpinningWheels[0].getResultType);
-            } else if (self.getNumberOfLineUp() === self.getNumberOfSpinningWheels() - 1) {
+            } else if (getNumberOfLineUp() === getNumberOfSpinningWheels() - 1) {
                 message = pickOne(winLoseMessages.almost);
             } else {
                 message = pickOne(winLoseMessages.lose);
@@ -58,21 +74,5 @@ function SlotMachine(selectorForSpinTrigger, selectorForResultMessage, initialSp
             $(selectorForResultMessage).html(message).fadeIn(2000);
         });
     });
-
-    this.clearResults = function() {
-        arrResults = {};
-    };
-
-    this.tallyUpResults = function(result) {
-        arrResults[result] = (arrResults[result] || 0) + 1;
-    };
-
-    this.getNumberOfLineUp = function() {
-        return Math.max.apply(null, $.map(arrResults, function(v, k) { return v; }));
-    };
-
-    this.getNumberOfSpinningWheels = function() {
-        return arrSpinningWheelData.length;
-    };
 
 }
