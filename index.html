@@ -1,57 +1,41 @@
 <!DOCTYPE html>
 <!-- using carousel CSS transform library from https://desandro.github.io/3dtransforms/examples/carousel-02-dynamic.html -->
-<html lang="en" class=" js csstransforms3d"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" class=" js csstransforms3d">
 
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <!-- disable zooming -->
   <meta name="viewport" content="initial-scale=1.0, user-scalable=0">
 
-  <title>Carousel 2 - dynamic · Intro to CSS 3D transforms › Examples</title>
+  <title>See if you get a free beverage -- the slot machine will tell you</title>
 
+  <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
   <link rel="stylesheet" href="css/style.css" media="screen">
   <link rel="stylesheet" href="css/carousel.css" media="screen">
   <link rel="stylesheet" href="css/slot-machine.css" media="screen">
 
-
 </head>
 <body class=" ready">
 
-  <h1>Carousel 2 - dynamic</h1>
+    <h1>See if you get a free beverage today</h1>
 
   <section class="container">
     <div id="carousel1" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
     </div>
   </section>
+
   <section class="container">
     <div id="carousel2" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
-
     </div>
   </section>
+
   <section class="container">
     <div id="carousel3" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
     </div>
-
   </section>
 
-  <section id="options">
-    <p>
-      <label for="panel-count">panels</label>
-      <input type="range" id="panel-count" value="9" min="3" max="20">
-    <span class=" range-display">9</span></p>
-
-    <p id="navigation">
-      <button id="previous" data-increment="-1">Previous</button>
-      <button id="next" data-increment="1">Next</button>
-    </p>
-
-    <p>
-      <button id="toggle-axis">Toggle Carousel Axis</button>
-    </p>
-
-    <p>
-      <button id="toggle-backface-visibility">Toggle Backface Visibility</button>
-    </p>
-
+  <section class="slot-machine-controls">
+      <button type="button" class="spin btn btn-primary btn-lg" data-increment="1">Spin</button>
   </section>
 
   <script src="js/jquery.min.js"></script>
@@ -61,16 +45,6 @@
   <script src="js/slot-machine.js"></script>
   <script src="js/main.js"></script>
 
-
   <p id="disclaimer">Sorry, your browser does not support CSS 3D transforms. This example may be broken.</p>
-
-  <footer>
-  <p><a href="https://desandro.github.io/3dtransforms/">Intro to CSS 3D transforms</a> by David DeSandro</p>
-  <p>Article content licensed <a href="http://creativecommons.org/licenses/by/2.0/">CC-BY</a>.
-      All example code licensed <a href="http://desandro.mit-license.org/">MIT</a>.</p>
-  <p><a href="https://github.com/desandro/3dtransforms/issues/">Help improve these docs. Open an issue or pull request.</a></p>
-</footer>
-
-
 
 </body></html>

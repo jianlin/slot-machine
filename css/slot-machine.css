@@ -3,3 +3,6 @@
 
 /*#carousel1 { float: left }
 #carousel3 { float: right }*/
+
+.slot-machine-controls { text-align: center; }
+.slot-machine-controls button.spin { width: 8em; }

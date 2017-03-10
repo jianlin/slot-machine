@@ -109,32 +109,16 @@ var init = function() {
     };
 
     // populate on startup
-    carousel.panelCount = parseInt( panelCountInput.value, 10);
+    carousel.panelCount = 9;
     carousel.modify();
 
-    carousel2.panelCount = parseInt( panelCountInput.value, 10);
+    carousel2.panelCount = 9;
     carousel2.modify();
 
-    carousel3.panelCount = parseInt( panelCountInput.value, 10);
+    carousel3.panelCount = 9;
     carousel3.modify();
 
-    axisButton.addEventListener( 'click', function(){
-        carousel.isHorizontal = !carousel.isHorizontal;
-        carousel.modify();
-    }, false);
-
-    panelCountInput.addEventListener( 'change', function( event ) {
-        carousel.panelCount = event.target.value;
-        carousel.modify();
-    }, false);
-
-    for (var i=0; i < 2; i++) {
-        navButtons[i].addEventListener( 'click', onNavButtonClick, false);
-    }
-
-    document.getElementById('toggle-backface-visibility').addEventListener( 'click', function(){
-        carousel.element.toggleClassName('panels-backface-invisible');
-    }, false);
+    $(".slot-machine-controls button.spin").click(onNavButtonClick);
 
     setTimeout( function(){
         document.body.addClassName('ready');
