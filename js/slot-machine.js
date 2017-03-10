@@ -1,6 +1,6 @@
 /* global $, SpinningWheel */
 
-function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVelocity, arrSpinningWheelData, winLoseMessages) {
+function SlotMachine(selectorForSpinTrigger, selectorForResultMessage, initialSpinVelocity, arrSpinningWheelData, winLoseMessages) {
     var self = this, i, data, arrSpinningWheels = [], arrResults = {};
 
     for (i = 0; i < arrSpinningWheelData.length; i++) {
@@ -12,7 +12,7 @@ function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVeloc
                                                    data.imageData,
                                                    initialSpinVelocity,
                                                    // the following is deceleration. Note that
-                                                   // it is made so that the leftmost spinning wheel decelerate faster.
+                                                   // it is made so that the left spinning wheels decelerate faster than the right ones.
                                                    // Use a closure to capture the value of i using local scope:
                                                    (function(i) {
                                                        return function getRandomDeceleration() {
@@ -28,10 +28,10 @@ function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVeloc
         return arr[Math.floor(Math.random() * arr.length)];
     }
 
-    $(selectorForSpin).click(function() {
+    $(selectorForSpinTrigger).click(function() {
         var promise, arrPromises = [];
 
-        $(selectorForSpin).prop("disabled", true);
+        $(selectorForSpinTrigger).prop("disabled", true);
         $(selectorForResultMessage).fadeOut(1200);
         self.clearResults();
         for (i = 0; i < arrSpinningWheels.length; i++) {
@@ -42,9 +42,12 @@ function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVeloc
             arrPromises.push(promise);
         }
         // when all spinning wheels have stopped:
+        // (we could use the fact that the rightmost spinning wheel will stop last,
+        //  but just to handle any case no matter how the spinning wheels behave,
+        //  we use promises to see for all spinning wheels have stopped)
         $.when.apply($, arrPromises).done(function() {
             var message;
-            $(selectorForSpin).prop("disabled", false);
+            $(selectorForSpinTrigger).prop("disabled", false);
             if (self.getNumberOfLineUp() === self.getNumberOfSpinningWheels()) {
                 message = pickOne(winLoseMessages.win).replace("{0}", arrSpinningWheels[0].getResultType);
             } else if (self.getNumberOfLineUp() === self.getNumberOfSpinningWheels() - 1) {
