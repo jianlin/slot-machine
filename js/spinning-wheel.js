@@ -1,5 +1,5 @@
 
-function SpinningWheel(id, numPanels, arrImageData, initialSpinVelocity, deceleration) {
+function SpinningWheel(id, numPanels, arrImageData, initialSpinVelocity, getRandomDeceleration) {
 
     var i,
         elementSelf = $(id),
@@ -20,6 +20,7 @@ function SpinningWheel(id, numPanels, arrImageData, initialSpinVelocity, deceler
         var deferred = $.Deferred();
         var currentTime = (new Date()).getTime(), preTime = currentTime;
         var velocity = initialSpinVelocity;
+        var deceleration = getRandomDeceleration();  console.log("DECELERATION", deceleration);
         var offBy;
 
         var timerID = setInterval(function() {

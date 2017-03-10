@@ -8,7 +8,7 @@
         ],
         {
             win: ["You won a free {0}!", "A free {0} is in order!", "Let's make you a free {0}."],
-            almost: ["You almost made it... too bad...", "You just missed by a single item!", "That is so close!"],
+            almost: ["You almost made it... too bad...", "You just missed by a single item!", "That was so close!"],
             lose: ["You missed by 1000 mile.", "I am sorry. No beverage for you!", "Please try again tomorrow."]
         });
 
