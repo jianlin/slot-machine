@@ -1,3 +1,4 @@
+/* global $, Carousel3D */
 
 function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initialSpinVelocity, getRandomDeceleration) {
 
@@ -70,7 +71,7 @@ function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initia
 
     this.getResultType = function() {
         var index = -(Math.round(carousel.rotation / carousel.theta) % arrImageData.length);
-        return arrImageData[index].type
+        return arrImageData[index].type;
     };
 
 }

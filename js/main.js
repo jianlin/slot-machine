@@ -1,3 +1,5 @@
+/* global $, SlotMachine */
+
 !(function() {
 
     $(function() {
@@ -12,7 +14,7 @@
             lose: ["You missed by 1000 mile.", "I am sorry. No beverage for you!", "Please try again tomorrow."]
         });
 
-        // part of the carousel code:
+        // the carousel library required this:
         setTimeout( function(){
             document.body.addClassName('ready');
         }, 0);

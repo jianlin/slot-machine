@@ -1,3 +1,4 @@
+/* global $, SpinningWheel */
 
 function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVelocity, arrSpinningWheelData, winLoseMessages) {
     var self = this, i, data, arrSpinningWheels = [], arrResults = {};
@@ -61,14 +62,14 @@ function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVeloc
 
     this.tallyUpResults = function(result) {
         arrResults[result] = (arrResults[result] || 0) + 1;
-    }
+    };
 
     this.getNumberOfLineUp = function() {
         return Math.max.apply(null, $.map(arrResults, function(v, k) { return v; }));
-    }
+    };
 
     this.getNumberOfSpinningWheels = function() {
         return arrSpinningWheelData.length;
-    }
+    };
 
 }
