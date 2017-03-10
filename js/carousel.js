@@ -1,3 +1,5 @@
+// this is part of the carousel CSS transform library from https://desandro.github.io/3dtransforms/examples/carousel-02-dynamic.html
+
 var transformProp = Modernizr.prefixed('transform');
 
 function Carousel3D ( el ) {
