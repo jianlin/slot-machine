@@ -1,18 +1,21 @@
 
-function SpinningWheel(id, numPanels, arrImageData, initialSpinVelocity, getRandomDeceleration) {
+function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initialSpinVelocity, getRandomDeceleration) {
 
     var i,
-        elementSelf = $(id),
+        elementSelf = $(selectorForSpinningWheel),
         carousel,
         timeInterval = 33,
         numTimeIntervalToFineAdjust = 17;
 
     for (i = 0; i < numPanels; i++) {
-        elementSelf.append('<figure style="transform: rotateX(' + i * 40 + 'deg) translateZ(192px); background-image: url(\'' + arrImageData[i % arrImageData.length].path + '\')"></figure>');
+        elementSelf.append('<figure style="transform: rotateX(' + i * (360 / numPanels)  + 'deg) translateZ(192px); background-image: url(\'' + arrImageData[i % arrImageData.length].path + '\')"></figure>');
     }
 
     carousel = new Carousel3D( elementSelf[0] );
-    carousel.panelCount = numPanels;
+    carousel.panelCount = numPanels; console.log("numPanels", numPanels, 360 / numPanels)
+
+    // rotate the spinning wheel randomly when the spinning wheel is created
+    carousel.rotation = -Math.floor(Math.random() * numPanels) * (360 / numPanels);
     carousel.modify();
 
     this.spin = function() {

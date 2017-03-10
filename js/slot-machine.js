@@ -21,12 +21,12 @@ function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVeloc
         data = arrSpinningWheelData[i];
         arrSpinningWheels.push(
                                 new SpinningWheel(
-                                                   data.id,
+                                                   data.selector,
                                                    data.numPanels,
                                                    data.imageData,
                                                    initialSpinVelocity,
                                                    // the following is deceleration. Note that
-                                                   // it is made so that initial spin wheel decelerate faster.
+                                                   // it is made so that the leftmost spinning wheel decelerate faster.
                                                    // Use a closure to capture the value of i using local scope:
                                                    (function(i) {
                                                        return function getRandomDeceleration() { console.log("I IS", i);
