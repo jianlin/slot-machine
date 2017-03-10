@@ -76,6 +76,4 @@ function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initia
         return deferred.promise();
     };
 
-
-
 }

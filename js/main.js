@@ -1,6 +1,6 @@
 /* global $, SlotMachine */
 
-!(function() {
+;(function() {
 
     $(function() {
         new SlotMachine("#slot-machine button.spin", "#slot-machine .result-message .message", 22, [
