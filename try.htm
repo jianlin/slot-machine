@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <!-- saved from url=(0073)https://desandro.github.io/3dtransforms/examples/carousel-02-dynamic.html -->
 <html lang="en" class=" js csstransforms3d"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  
+
+
   <!-- disable zooming -->
   <meta name="viewport" content="initial-scale=1.0, user-scalable=0">
-  
-  <title>Carousel 2 - dynamic · Intro to CSS 3D transforms › Examples</title>
-  
-  <link rel="stylesheet" href="./try_files/style.css" media="screen">
 
+  <title>Carousel 2 - dynamic · Intro to CSS 3D transforms › Examples</title>
+
+  <link rel="stylesheet" href="./try_files/style.css" media="screen">
+  <link rel="stylesheet" href="css/slot-machine.css" media="screen">
 
     <style media="screen">
 
     .container {
-      width: 210px;
-      height: 140px;
+      /*width: 630px;
+      height: 140px;*/
+      padding: 120px 0;
+      display: inline-block;
       position: relative;
       margin: 0 auto 40px;
       border: 1px solid #CCC;
@@ -26,38 +28,38 @@
     }
 
 
-    #carousel {
-      width: 100%;
+    .carousel {
+      /*width: 100%;
       height: 100%;
-      position: absolute;
+      position: absolute;*/
       -webkit-transform-style: preserve-3d;
          -moz-transform-style: preserve-3d;
            -o-transform-style: preserve-3d;
               transform-style: preserve-3d;
     }
 
-    .ready #carousel {
-      -webkit-transition: -webkit-transform 1s;
-         -moz-transition: -moz-transform 1s;
-           -o-transition: -o-transform 1s;
-              transition: transform 1s;
+    .ready .carousel {
+      /*-webkit-transition: -webkit-transform 0.33s;
+         -moz-transition: -moz-transform 0.33s;
+           -o-transition: -o-transform 0.33s;*/
+              transition: transform 0.033s;
     }
 
-    #carousel.panels-backface-invisible figure {
+    .carousel.panels-backface-invisible figure {
       -webkit-backface-visibility: hidden;
          -moz-backface-visibility: hidden;
            -o-backface-visibility: hidden;
               backface-visibility: hidden;
     }
 
-    #carousel figure {
+    .carousel figure {
       display: block;
       position: absolute;
       width: 186px;
       height: 116px;
       left: 10px;
       top: 10px;
-      border: 2px solid black;
+      border: 2px solid #000;
       line-height: 116px;
       font-size: 80px;
       font-weight: bold;
@@ -65,7 +67,7 @@
       text-align: center;
     }
 
-    .ready #carousel figure {
+    .ready .carousel figure {
       -webkit-transition: opacity 1s, -webkit-transform 1s;
          -moz-transition: opacity 1s, -moz-transform 1s;
            -o-transition: opacity 1s, -o-transform 1s;
@@ -80,28 +82,44 @@
   <h1>Carousel 2 - dynamic</h1>
 
   <section class="container">
-    <div id="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
-      <figure style="opacity: 1; background-color: rgba(255, 0, 0, 0.8); transform: rotateX(0deg) translateZ(192px);">1</figure>
-      <figure style="opacity: 1; background-color: rgba(255, 170, 0, 0.8); transform: rotateX(40deg) translateZ(192px);">2</figure>
-      <figure style="opacity: 1; background-color: rgba(170, 255, 0, 0.8); transform: rotateX(80deg) translateZ(192px);">3</figure>
-      <figure style="opacity: 1; background-color: rgba(0, 255, 0, 0.8); transform: rotateX(120deg) translateZ(192px);">4</figure>
-      <figure style="opacity: 1; background-color: rgba(0, 255, 170, 0.8); transform: rotateX(160deg) translateZ(192px);">5</figure>
-      <figure style="opacity: 1; background-color: rgba(0, 170, 255, 0.8); transform: rotateX(200deg) translateZ(192px);">6</figure>
-      <figure style="opacity: 1; background-color: rgba(0, 0, 255, 0.8); transform: rotateX(240deg) translateZ(192px);">7</figure>
-      <figure style="opacity: 1; background-color: rgba(170, 0, 255, 0.8); transform: rotateX(280deg) translateZ(192px);">8</figure>
-      <figure style="opacity: 1; background-color: rgba(255, 0, 170, 0.8); transform: rotateX(320deg) translateZ(192px);">9</figure>
-      <figure style="opacity: 0; transform: none;">10</figure>
-      <figure style="opacity: 0; transform: none;">11</figure>
-      <figure style="opacity: 0; transform: none;">12</figure>
-      <figure style="opacity: 0; transform: none;">13</figure>
-      <figure style="opacity: 0; transform: none;">14</figure>
-      <figure style="opacity: 0; transform: none;">15</figure>
-      <figure style="opacity: 0; transform: none;">16</figure>
-      <figure style="opacity: 0; transform: none;">17</figure>
-      <figure style="opacity: 0; transform: none;">18</figure>
-      <figure style="opacity: 0; transform: none;">19</figure>
-      <figure style="opacity: 0; transform: none;">20</figure>
+    <div id="carousel1" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
+      <figure style="opacity: 1; background-color: rgba(255, 0, 0, 1); transform: rotateX(0deg) translateZ(192px); background-image: url('images/coffee-maker.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(255, 170, 0, 1); transform: rotateX(40deg) translateZ(192px); background-image: url('images/teapot.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(170, 255, 0, 1); transform: rotateX(80deg) translateZ(192px); background-image: url('images/espresso-machine.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(0, 255, 0, 1); transform: rotateX(120deg) translateZ(192px); background-image: url('images/coffee-maker.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(0, 255, 170, 1); transform: rotateX(160deg) translateZ(192px); background-image: url('images/teapot.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(0, 170, 255, 1); transform: rotateX(200deg) translateZ(192px); background-image: url('images/espresso-machine.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(0, 0, 255, 1); transform: rotateX(240deg) translateZ(192px); background-image: url('images/coffee-maker.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(170, 0, 255, 1); transform: rotateX(280deg) translateZ(192px); background-image: url('images/teapot.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(255, 0, 170, 1); transform: rotateX(320deg) translateZ(192px); background-image: url('images/espresso-machine.png')"></figure>
     </div>
+</section>
+ <section class="container">
+    <div id="carousel2" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
+      <figure style="opacity: 1; background-color: rgba(255, 0, 0, 1); transform: rotateX(0deg) translateZ(192px); background-image: url('images/coffee-filter.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(255, 170, 0, 1); transform: rotateX(40deg) translateZ(192px); background-image: url('images/tea-strainer.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(170, 255, 0, 1); transform: rotateX(80deg) translateZ(192px); background-image: url('images/espresso-tamper.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(0, 255, 0, 1); transform: rotateX(120deg) translateZ(192px); background-image: url('images/coffee-maker.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(0, 255, 170, 1); transform: rotateX(160deg) translateZ(192px); background-image: url('images/teapot.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(0, 170, 255, 1); transform: rotateX(200deg) translateZ(192px); background-image: url('images/espresso-machine.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(0, 0, 255, 1); transform: rotateX(240deg) translateZ(192px); background-image: url('images/coffee-maker.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(170, 0, 255, 1); transform: rotateX(280deg) translateZ(192px); background-image: url('images/teapot.png')"></figure>
+      <figure style="opacity: 1; background-color: rgba(255, 0, 170, 1); transform: rotateX(320deg) translateZ(192px); background-image: url('images/espresso-machine.png')"></figure>
+    </div>
+</section>
+ <section class="container">
+    <div id="carousel3" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
+        <figure style="opacity: 1; background-color: rgba(255, 0, 0, 1); transform: rotateX(0deg) translateZ(192px); background-image: url('images/coffee-maker.png')"></figure>
+        <figure style="opacity: 1; background-color: rgba(255, 170, 0, 1); transform: rotateX(40deg) translateZ(192px); background-image: url('images/teapot.png')"></figure>
+        <figure style="opacity: 1; background-color: rgba(170, 255, 0, 1); transform: rotateX(80deg) translateZ(192px); background-image: url('images/espresso-machine.png')"></figure>
+        <figure style="opacity: 1; background-color: rgba(0, 255, 0, 1); transform: rotateX(120deg) translateZ(192px); background-image: url('images/coffee-maker.png')"></figure>
+        <figure style="opacity: 1; background-color: rgba(0, 255, 170, 1); transform: rotateX(160deg) translateZ(192px); background-image: url('images/teapot.png')"></figure>
+        <figure style="opacity: 1; background-color: rgba(0, 170, 255, 1); transform: rotateX(200deg) translateZ(192px); background-image: url('images/espresso-machine.png')"></figure>
+        <figure style="opacity: 1; background-color: rgba(0, 0, 255, 1); transform: rotateX(240deg) translateZ(192px); background-image: url('images/coffee-maker.png')"></figure>
+        <figure style="opacity: 1; background-color: rgba(170, 0, 255, 1); transform: rotateX(280deg) translateZ(192px); background-image: url('images/teapot.png')"></figure>
+        <figure style="opacity: 1; background-color: rgba(255, 0, 170, 1); transform: rotateX(320deg) translateZ(192px); background-image: url('images/espresso-machine.png')"></figure>
+    </div>
+
   </section>
 
   <section id="options">
@@ -137,7 +155,7 @@
       this.totalPanelCount = this.element.children.length;
       this.theta = 0;
 
-      this.isHorizontal = true;
+      this.isHorizontal = false;
 
     }
 
@@ -157,7 +175,7 @@
         panel = this.element.children[i];
         angle = this.theta * i;
         panel.style.opacity = 1;
-        panel.style.backgroundColor = 'hsla(' + angle + ', 100%, 50%, 0.8)';
+        panel.style.backgroundColor = 'hsla(' + angle + ', 100%, 50%, 0.9)';
         // rotate panel, then push it out in 3D space
         panel.style[ transformProp ] = this.rotateFn + '(' + angle + 'deg) translateZ(' + this.radius + 'px)';
       }
@@ -187,21 +205,65 @@
     var init = function() {
 
 
-      var carousel = new Carousel3D( document.getElementById('carousel') ),
+      var carousel = new Carousel3D( document.getElementById('carousel1') ),
+      carousel2 = new Carousel3D( document.getElementById('carousel2') ),
+      carousel3 = new Carousel3D( document.getElementById('carousel3') ),
           panelCountInput = document.getElementById('panel-count'),
           axisButton = document.getElementById('toggle-axis'),
           navButtons = document.querySelectorAll('#navigation button'),
 
           onNavButtonClick = function( event ){
             var increment = parseInt( event.target.getAttribute('data-increment') );
-            carousel.rotation += carousel.theta * increment * -1;
-            carousel.transform();
+            var currentTime = (new Date()).getTime(), preTime = currentTime;
+            var velocity = 16, deceleration = 0.18 + (Math.random() * 0.2 - 0.1); // plus or minus 0.1
+            var velocity2 = 17, deceleration2 = 0.15 + (Math.random() * 0.2 - 0.1); // plus or minus 0.1
+            var velocity3 = 18, deceleration3 = 0.12 + (Math.random() * 0.2 - 0.1); // plus or minus 0.1
+            var timerID = setInterval(function() {
+                // carousel.rotation += carousel.theta * increment * -1;
+                currentTime = (new Date()).getTime();
+                carousel.rotation -= velocity;
+                carousel2.rotation -= velocity2;
+                carousel3.rotation -= velocity3;
+                velocity -= deceleration;
+                velocity2 -= deceleration2;
+                velocity3 -= deceleration3;
+                if (velocity < 0) {
+                    velocity = 0;
+                } else {
+                    carousel.transform();
+                }
+                if (velocity2 < 0) {
+                    velocity2 = 0;
+                } else {
+                    carousel2.transform();
+                }
+                if (velocity3 < 0) {
+                    velocity3 = 0;
+                } else {
+                    carousel3.transform();
+                }
+                if (velocity <= 0 && velocity2 <= 0 && velocity3 <= 0) {
+                    clearInterval(timerID);
+                }
+                //
+                // carousel2.transform();
+                // carousel3.transform();
+                console.log("theta, panelCount", carousel.theta, carousel.panelCount, carousel, currentTime - preTime, velocity );
+                preTime = currentTime;
+            }, 33);
+            // carousel.rotation += carousel.theta * increment * -1;
+            // carousel.transform();
           };
 
       // populate on startup
       carousel.panelCount = parseInt( panelCountInput.value, 10);
       carousel.modify();
 
+      carousel2.panelCount = parseInt( panelCountInput.value, 10);
+      carousel2.modify();
+
+      carousel3.panelCount = parseInt( panelCountInput.value, 10);
+      carousel3.modify();
 
       axisButton.addEventListener( 'click', function(){
         carousel.isHorizontal = !carousel.isHorizontal;
