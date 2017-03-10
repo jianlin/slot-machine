@@ -4,7 +4,7 @@ function SlotMachine(selectorForSpin, arrSpinningWheelData) {
 
     for (i = 0; i < arrSpinningWheelData.length; i++) {
         data = arrSpinningWheelData[i];
-        new SpinningWheel(data.id, data.images);
+        new SpinningWheel(data.id, data.numPanels, data.images);
     }
 
     var carousel = new Carousel3D( document.getElementById('carousel1') ),
