@@ -2,11 +2,5 @@
 #slot-machine { width: 636px; margin: 0 auto; }
 #slot-machine .result-message .message { text-align: center; margin: 0; color: #48c; }
 #slot-machine .result-message { font-size: 22px; height: 2em; }
-
-.carousel { display: inline-block; width: 210px; height: 140px; }
-
-/*#carousel1 { float: left }
-#carousel3 { float: right }*/
-
-.controls { text-align: center; }
-.controls button.spin { width: 8em; }
+#slot-machine .controls { text-align: center; }
+#slot-machine .controls button.spin { width: 8em; }
