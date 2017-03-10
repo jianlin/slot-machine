@@ -1,14 +1,14 @@
 
-function SpinningWheel(id, numPanels, arrImages, initialSpinVelocity, deceleration) {
+function SpinningWheel(id, numPanels, arrImageData, initialSpinVelocity, deceleration) {
 
     var i,
         elementSelf = $(id),
         carousel,
         timeInterval = 33,
-        numTimeIntervalToFineAdjust = 7;
+        numTimeIntervalToFineAdjust = 17;
 
     for (i = 0; i < numPanels; i++) {
-        elementSelf.append('<figure style="transform: rotateX(' + i * 40 + 'deg) translateZ(192px); background-image: url(\'' + arrImages[i % arrImages.length] + '\')"></figure>');
+        elementSelf.append('<figure style="transform: rotateX(' + i * 40 + 'deg) translateZ(192px); background-image: url(\'' + arrImageData[i % arrImageData.length].path + '\')"></figure>');
     }
 
     carousel = new Carousel3D( elementSelf[0] );
@@ -16,7 +16,8 @@ function SpinningWheel(id, numPanels, arrImages, initialSpinVelocity, decelerati
     carousel.modify();
 
     this.spin = function() {
-
+        var self = this;
+        var deferred = $.Deferred();
         var currentTime = (new Date()).getTime(), preTime = currentTime;
         var velocity = initialSpinVelocity;
         var offBy;
@@ -42,9 +43,9 @@ function SpinningWheel(id, numPanels, arrImages, initialSpinVelocity, decelerati
                 // to make the fine adjustment not abrupt, do it in a few times
                 // instead of in just one shot
                 var fineAdjustTimerID = setInterval(function() {
-                    console.log(offBy, carousel.rotation, carousel.theta);
+                    //console.log(offBy, carousel.rotation, carousel.theta);
 
-                    console.log(carousel.rotation % carousel.theta, carousel.rotation, carousel.theta);
+                    //console.log(carousel.rotation % carousel.theta, carousel.rotation, carousel.theta);
                     carousel.rotation -= fineAdjustmentAmount;
                     carousel.transform();
 
@@ -52,8 +53,10 @@ function SpinningWheel(id, numPanels, arrImages, initialSpinVelocity, decelerati
                         clearInterval(fineAdjustTimerID);
                         // if it is a little bit off due to floating point, correct it:
                         carousel.rotation = Math.round(carousel.rotation / carousel.theta) * carousel.theta;
-                        console.log("FINAL", carousel.rotation % carousel.theta, carousel.rotation, carousel.theta);
+                        //console.log("FINAL", carousel.rotation % carousel.theta, carousel.rotation, carousel.theta);
                         carousel.transform();
+                        console.log("RESULT", Math.round(carousel.rotation / carousel.theta), Math.round(carousel.rotation / carousel.theta) % arrImageData.length, self.getResultType());
+                        deferred.resolve(self.getResultType());
                     }
                 }, timeInterval);
 
@@ -64,5 +67,13 @@ function SpinningWheel(id, numPanels, arrImages, initialSpinVelocity, decelerati
             preTime = currentTime;
         }, timeInterval);
 
+        return deferred.promise();
     };
+
+    this.getResultType = function() {
+        var index = -(Math.round(carousel.rotation / carousel.theta) % arrImageData.length);
+        console.log(Math.round(carousel.rotation / carousel.theta), arrImageData[index].type);
+        return arrImageData[index].type
+    };
+
 }

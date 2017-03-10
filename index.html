@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <!-- using carousel CSS transform library from https://desandro.github.io/3dtransforms/examples/carousel-02-dynamic.html -->
+<!-- TODO: indent code, and JSLint -->
+<!-- TODO: randomize wheel on page load -->
+<!-- TODO: try iPhone, Android phone -->
+
 <html lang="en" class=" js csstransforms3d">
 
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <!-- disable zooming -->
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=0">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=0">
 
-  <title>See if you get a free beverage -- the slot machine will tell you</title>
+    <title>See if you get a free beverage -- the slot machine will tell you</title>
 
-  <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-  <link rel="stylesheet" href="css/style.css" media="screen">
-  <link rel="stylesheet" href="css/carousel.css" media="screen">
-  <link rel="stylesheet" href="css/slot-machine.css" media="screen">
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/carousel.css" media="screen">
+    <link rel="stylesheet" href="css/slot-machine.css" media="screen">
 
 </head>
-<body class=" ready">
+<body>
 
     <h1>Spin to see if you get a free beverage</h1>
 
-  <div id="slot-machine">
-  <section class="container">
-    <div id="carousel1" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
+    <div id="slot-machine">
+        <section class="container">
+            <div id="carousel1" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
+            </div>
+        </section><section class="container">
+            <div id="carousel2" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
+            </div>
+        </section><section class="container">
+            <div id="carousel3" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
+            </div>
+        </section>
+
+        <section class="result-message">
+            <p class="message">&nbsp;</p>
+        </section>
+        <section class="controls">
+            <button type="button" class="spin btn btn-primary btn-lg" data-increment="1">Spin</button>
+        </section>
     </div>
-  </section>
 
-  <section class="container">
-    <div id="carousel2" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
-    </div>
-  </section>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/spinning-wheel.js"></script>
+    <script src="js/slot-machine.js"></script>
+    <script src="js/main.js"></script>
 
-  <section class="container">
-    <div id="carousel3" class="carousel" style="transform: translateZ(-192px) rotateX(-1160deg);">
-    </div>
-  </section>
-
-  <section class="slot-machine-controls">
-      <button type="button" class="spin btn btn-primary btn-lg" data-increment="1">Spin</button>
-  </section>
-
-  </div>
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/carousel.js"></script>
-  <script src="js/spinning-wheel.js"></script>
-  <script src="js/slot-machine.js"></script>
-  <script src="js/main.js"></script>
-
-  <p id="disclaimer">Sorry, your browser does not support CSS 3D transforms. This example may be broken.</p>
+    <p id="disclaimer">Sorry, your browser does not support CSS 3D transforms. This example may be broken.</p>
 
 </body></html>
