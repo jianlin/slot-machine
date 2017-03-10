@@ -25,13 +25,17 @@ function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initia
     };
 
     this.spin = function() {
-        var self = this;
-        var deferred = $.Deferred();
-        var velocity = initialSpinVelocity;
-        var deceleration = getRandomDeceleration();
-        var offBy;
+        var self = this,
+            deferred = $.Deferred(),
+            velocity = initialSpinVelocity,
+            deceleration = getRandomDeceleration(),
+            offBy,
+            timerID;
 
-        var timerID = setInterval(function() {
+        timerID = setInterval(function() {
+
+            var fineAdjustmentAmount, countTimeIntervalToFineAdjust, fineAdjustTimerID;
+
             carousel.rotation -= velocity;
             velocity -= deceleration;
             if (velocity < 0) {
@@ -41,7 +45,8 @@ function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initia
                 // now the spin wheel might be "off" a little, so
                 // adjust it back by rounding it off to the nearest panel
                 offBy = carousel.rotation % carousel.theta;
-                var fineAdjustmentAmount, countTimeIntervalToFineAdjust = 0;
+
+                countTimeIntervalToFineAdjust = 0;
                 if (-offBy > carousel.theta / 2) {
                     fineAdjustmentAmount = (carousel.theta + offBy) / numTimeIntervalToFineAdjust;
                 } else {
@@ -50,7 +55,7 @@ function SpinningWheel(selectorForSpinningWheel, numPanels, arrImageData, initia
 
                 // to make the fine adjustment not abrupt, do it in a few times
                 // instead of in just one shot
-                var fineAdjustTimerID = setInterval(function() {
+                fineAdjustTimerID = setInterval(function() {
                     carousel.rotation -= fineAdjustmentAmount;
                     carousel.transform();
 
