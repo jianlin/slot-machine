@@ -1,18 +1,3 @@
-var i, j, arr = [];
-
-function Foo(fn) {
-	this.sayIt = fn;
-}
-
-for (i = 0; i < 5; i++) {
-	arr.push(new Foo(function() {
-  	console.log("HMMM I is", i);
-  }));
-}
-
-for (j = 0; j < 5; j++) {
-	arr[j].sayIt();
-}
 
 function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVelocity, arrSpinningWheelData, winLoseMessages) {
     var self = this, i, data, arrSpinningWheels = [], arrResults = {};
@@ -29,7 +14,7 @@ function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVeloc
                                                    // it is made so that the leftmost spinning wheel decelerate faster.
                                                    // Use a closure to capture the value of i using local scope:
                                                    (function(i) {
-                                                       return function getRandomDeceleration() { console.log("I IS", i);
+                                                       return function getRandomDeceleration() {
                                                            return 0.02 + 0.08 * (arrSpinningWheelData.length - i) + (Math.random() * 0.02 - 0.01); // plus or minus 0.01
                                                        };
                                                    }(i))
@@ -67,7 +52,6 @@ function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVeloc
                 message = pickOne(winLoseMessages.lose);
             }
             $(selectorForResultMessage).html(message).fadeIn(2000);
-            console.log("ALL DONE", self.getNumberOfLineUp());
         });
     });
 
@@ -76,14 +60,10 @@ function SlotMachine(selectorForSpin, selectorForResultMessage, initialSpinVeloc
     };
 
     this.tallyUpResults = function(result) {
-        console.log("Got a result", result);
         arrResults[result] = (arrResults[result] || 0) + 1;
-        console.log("arrResults", arrResults, $.map(arrResults, function(v, k) { return v; }));
-        console.log(self.getNumberOfLineUp());
     }
 
     this.getNumberOfLineUp = function() {
-        console.log("MaximumLineUp", Math.max.apply(null, $.map(arrResults, function(v, k) { return v; })));
         return Math.max.apply(null, $.map(arrResults, function(v, k) { return v; }));
     }
 
